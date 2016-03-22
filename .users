@@ -1,0 +1,54 @@
+{
+	"test":	{
+		"password":	"$1$dtFvKEVL$NLM8XXKU.GCdGa3dJ7oAU/",
+		"recovery":	[{
+				"question":	"test",
+				"answer":	"$1$etFvKEVL$zoT/IZUSCnwP6FPQOAi7c."
+			}, {
+				"question":	"test",
+				"answer":	"$1$ftFvKEVL$U5USkYlytc8mhKDJXhcoT/"
+			}, {
+				"question":	"test",
+				"answer":	"$1$gtFvKEVL$ZY0aLsL3l3zROcAu144Wo0"
+			}]
+	},
+	"ryan":	{
+		"password":	"$1$NGIvKe5I$RQAwLZFA9lUYZIqH/VLbz1",
+		"recovery":	[{
+				"question":	"test",
+				"answer":	"$1$PGIvKe5I$0BFjvHtYw1n5teroUZESk."
+			}, {
+				"question":	"test",
+				"answer":	"$1$QGIvKe5I$08wPofVA1Lc17PFCfG4Mh1"
+			}, {
+				"question":	"test",
+				"answer":	"$1$RGIvKe5I$vTF04fuRdH8/PBm91Xoa7/"
+			}]
+	},
+	"Steve":	{
+		"password":	"$1$3YTvKczK$ugzKmSmXO2XaChSdze2mT1",
+		"recovery":	[{
+				"question":	"test",
+				"answer":	"$1$5YTvKczK$lwzNZSDKocQSikr11UNkr/"
+			}, {
+				"question":	"test",
+				"answer":	"$1$6YTvKczK$M3jJ5SAQSUsQOJ5SsgUWt1"
+			}, {
+				"question":	"test",
+				"answer":	"$1$7YTvKczK$WNqUFqB1vp7RMxbpohko8/"
+			}]
+	},
+	"ryan\r":	{
+		"password":	"$1$7m4wKBaE$ED2IfjhYYyScRSo9XBWle0",
+		"recovery":	[{
+				"question":	"test_dir_rec",
+				"answer":	"$1$7m4wKBaE$EvhwAk3bneQTlFbVWixe./"
+			}, {
+				"question":	"test_dir_r",
+				"answer":	"$1$7m4wKBaE$v5thTxKsUWka8cEY1d/b90"
+			}, {
+				"question":	"test_dir",
+				"answer":	"$1$7m4wKBaE$0M3W0Iul4UZLpIPXgKLYR1"
+			}]
+	}
+}
