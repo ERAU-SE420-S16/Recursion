@@ -1,0 +1,96 @@
+#!/usr/bin/expect
+set successMsg "SUCCESS"
+set failureMsg "FAILURE"
+set timeoutMsg "TIMEOUT"
+
+spawn -noecho bash
+set timeout 1
+log_user 1
+
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+puts "\n~~~ Make Clean on all modules ~~~"
+##clean
+	send "make clean\n"
+	
+
+expect {
+-re {make: \*\*\* \[clean\]} {
+	puts "Clean: \t\t$failureMsg"
+	}
+	timeout{
+	puts "Clean: \t\t$successMsg"
+	}
+}
+## Clear expect buffer
+expect *
+##----------------------------------------------------------------------
+	send "make\n"
+expect {
+  -re "make:" {
+    puts "Make: \t\t$failureMsg"
+    puts "Compilation: \t$failureMsg"
+    exit
+  }
+  -timeout 0
+  timeout {
+    puts "Make: \t\t$successMsg"
+    puts "Compilation: \t$successMsg"
+  }
+}
+# Use this to "buffer" expect interpreter 
+expect *
+expect timeout {}
+##--------------------------------------------------------------------------
+puts "\n### File Gen Test ###"
+set timeout 10
+send "./filelistGenTest < ./test_scripts/negative/FileGenTest.in \n"
+expect {
+  -re "Invalid path used.*Success!" {
+    puts "File Generator Negative Test:\t$successMsg"
+  }
+  timeout {
+    puts "File Generator Negative Test:\t$failureMsg"
+  }
+}
+send "./filelistGenTest < ./test_scripts/positive/FileGenTest.in \n"
+expect {
+  -re "Success!" {
+    puts "\n### File Generator Positive Test:\t$successMsg ###"
+  }
+  timeout {
+    puts "\n### File Generator Positive Test:\t$failureMsg ###"
+  }
+}
+set timeout 1000
+send "./filelistGenTest < ./test_scripts/soak/FileGenTest.in \n"
+expect {
+  -re "Success!" {
+    puts "\n### File Generator Soak Test:\t$successMsg ###"
+  }
+  timeout {
+    puts "\n### File Generator Soak Test:\t$failureMsg ###"
+  }
+}
+expect *
+expect timeout {}
+##-----------------------------------------------------------------------------
+puts "\n### Login Test ###"
+set timeout 3
+send "./loginTest < ./test_scripts/negative/LoginTest.in\n" 
+expect {
+  -re "Authentication Error!" {
+    puts "\n### Login Test Negative Test:\t$successMsg ###"
+  }
+  timeout {
+    puts "\n### Login Test Negative Test:\t$failureMsg ###"
+  }
+}
+send "./loginTest < ./test_scripts/positive/LoginTest.in\n" 
+expect {
+  -re "User authenticated!" {
+    puts "\n### Login Test Positive Test:\t$successMsg ###"
+  }
+  timeout {
+    puts "\n### Login Test Positive Test:\t$failureMsg ###"
+  }
+}
