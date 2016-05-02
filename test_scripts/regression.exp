@@ -41,6 +41,20 @@ expect {
 expect *
 expect timeout {}
 ##--------------------------------------------------------------------------
+puts "\n### Encryption Module Test ###"
+set timeout 10
+send "./encryptionTest < ./test_scripts/positive/Encryption.in \n"
+expect {
+  -re ".*Successfully encrypted and decrypted file!.*" {
+    puts "Encryption Test:\t$successMsg"
+  }
+  timeout {
+    puts "Encryption Test:\t$failureMsg"
+  }
+}
+expect *
+expect timeout {}
+##--------------------------------------------------------------------------
 puts "\n### File Gen Test ###"
 set timeout 10
 send "./filelistGenTest < ./test_scripts/negative/FileGenTest.in \n"
