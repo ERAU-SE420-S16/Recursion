@@ -146,5 +146,6 @@ void main() {
       }
     }
   }
+  printf("Success!\n");
   exit(EXIT_SUCCESS); 
 }
