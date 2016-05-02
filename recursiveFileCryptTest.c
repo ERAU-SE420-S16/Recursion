@@ -37,7 +37,7 @@ void fileCrypt(char* filenameIn, char* password) {
   fileInput  = (char*) malloc(passLen + fileLen + 1); 
   fileOutput = (char*) malloc(passLen + fileLen + 1); 
     
-  if (strstr(filenameIn, "crpt" )) {
+  if (strstr(filenameIn, ".crpt" )) {
     printf("Running decryption protocol on %s!\n", filenameIn);
     strcpy(fileInput, fileInputTemp);
     
